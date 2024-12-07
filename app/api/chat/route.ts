@@ -1,4 +1,4 @@
-import { OpenAIStreamingCompletion, StreamingTextResponse } from 'ai'
+import { StreamingTextResponse } from 'ai'
 import OpenAI from 'openai'
 
 const openai = new OpenAI({
@@ -20,6 +20,5 @@ export async function POST(req: Request) {
     ]
   })
 
-  const stream = OpenAIStreamingCompletion(response)
-  return new StreamingTextResponse(stream)
+  return new StreamingTextResponse(response.body)
 }
